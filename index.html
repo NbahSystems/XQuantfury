@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Riesgo en el trading · Versión especial que calcula el nivel de margen de tu operativa</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body>
+    <div class="midivHeader">
+        <h1>Calculadora de Trading</h1>
+        <h2>Gestión de Riesgo</h2>
+        <h3>· Versión especial que calcula el nivel de margen de tu operativa ·</h3>
+        <h4>EN QUANTFURY EL NIVEL DE MÁRGEN (MARGIN, APALANCAMIENTO,...) NUNCA SERÁ MAYOR DE X20</h4>
+        <p>Según miembros del Soporte de Quantfury, cuando operamos con margen éste puede oscilar y para ello esta calculadora</p>
+        <p><strong>Fórmula</strong> X = Tamaño de la posición / Capital total de la cuenta de margen</p>
+        <p>Por ejemplo: Posición de $2000, capital en la cuenta de margen de $100. Nivel de margen, 20X</p>
+    </div>
+    <div class="container">
+        <form class="formularioOnlyRead">
+            <label for="niveldemargen">ESTÁS OPERANDO CON UN MARGEN DE </label>
+            <input type="number" id="niveldemargen" name="niveldemargen" readonly><label>X</label>
+        </form>
+        <form class="formulario">
+            <label for="tamposicion">¿Cual es el tamaño de tu posición o del total de tus posiciones?</label>
+            <input type="number" id="tamposicion" name="tamposicion" value="2000">
+            <br>
+            <label for="ccuentamargen">¿Que cantidad tiene tu cuenta de margen?</label>
+            <input type="number" id="ccuentamargen" name="ccuentamargen">
+            <button type="reset" onclick="limpiarFormularios()">Limpiar</button>
+            <button type="button" onclick="calcular()" class="boton-glow">Calcular</button>
+        </form>
+    </div>
+    <div class="misdivs">
+        <aside>Aqui tienes mis enlaces principales <a href="https://linktr.ee/codeandopython" target="_blank" title="Linktree Codeando Python">Linktree Codeando Python</a></aside>
+        <img src="Calculadora Gestión Riesgo.jpg" width="167px" height="167px">
+        <img src="codeandopython.png" width="167px" height="167px" alt="Linktree Codeando Python" title="Linktree Codeando Python">
+        <img src="Calculadora Gestión Riesgo II.jpg" width="167px" height="167px">
+    </div>
+    <div class="misdivs">
+        <h6>Tanto la idea cómo el prototipo en su totalidad son creación de Hackst3r Webmaster · Marzo de 2023</h6>
+    </div>
+    <script type="text/javascript">
+    function limpiarFormularios() {
+        document.querySelector('.formularioOnlyRead').reset();
+        document.querySelector('.formulario').reset();
+    }
+
+    function calcular() {
+        // Obtenemos los valores introducidos por el usuario
+        const tam = Number(document.getElementById("tamposicion").value);
+        const saldo = Number(document.getElementById("ccuentamargen").value);
+
+        // Calculamos los valores necesarios
+        const xdemargenactual = tam / saldo;
+
+        // Actualizamos los campos correspondientes en la página
+        document.getElementById("niveldemargen").value = xdemargenactual.toFixed(2);
+
+    }
+    </script>
+</body>
+
+</html>
